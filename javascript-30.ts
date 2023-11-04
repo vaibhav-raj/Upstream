@@ -32,6 +32,30 @@ const fitlerFunc = (row) => {
 console.log(filterData(data, fitlerFunc))
 ================================================================================================================================================================================
 Code 5: Implement a function that performs insertion sort.
+function insertionSort(arr) {
+  const length = arr.length;
+  
+  for (let i = 1; i < length; i++) {
+    // Store the current element to be inserted
+    const currentElement = arr[i];
+    let j = i - 1;
+    
+    // Find the correct position for the current element in the sorted part of the array
+    while (j >= 0 && arr[j] > currentElement) {
+      arr[j + 1] = arr[j]; // Shift elements to the right
+      j--;
+    }
+    // Insert the current element into its correct position
+    arr[j + 1] = currentElement;
+  }
+  
+  return arr;
+}
+// Example usage:
+const unsortedArray = [4, 25, 12, 22, 11];
+const sortedArray = insertionSort(unsortedArray);
+console.log(sortedArray); // Output: [11, 12, 22, 25, 64]
+
 ================================================================================================================================================================================
 Code 6: Implement a function that returns a memoized version of a function which accepts any number of arguments.
 ================================================================================================================================================================================
