@@ -163,6 +163,41 @@ Code 11:Implement a function that determines if two values are deep equal.
 Code 12: Implement a function to highlight text if a searched term appears within it.
 ================================================================================================================================================================================
 Code 13: Implement a function that returns a new object after squashing the input object.
+function squashObject(inputObject, separator = '.') {
+  const result = {};
+
+  function recurse(current, prop) {
+    if (Object(current) !== current || Array.isArray(current)) {
+      result[prop] = current;
+    } else {
+      for (const key in current) {
+        if (current.hasOwnProperty(key)) {
+          if (prop === '') {
+            recurse(current[key], key);
+          } else {
+            recurse(current[key], prop + separator + key);
+          }
+        }
+      }
+    }
+  }
+
+  recurse(inputObject, '');
+  return result;
+}
+
+// Example usage:
+const nestedObject = {
+  a: {
+    b: {
+      c: 1,
+      d: 2,
+    },
+  },
+  e: [3, 4],
+};
+
+console.log(squashObject(nestedObject));
 ================================================================================================================================================================================
 Code 14: Implement a function that creates a resumable interval object.
 ================================================================================================================================================================================
