@@ -21,7 +21,6 @@ Code 9: Implement a function to highlight text if searched terms appear within i
 Code 10: Implement a function to recursively transform values.
 
 function recursiveTransform(input, transFormFunction) {
-
     if (Array.isArray(input)) {
         return input.map(inp => recursiveTransform(inp, transFormFunction))
     } else if (typeof input === 'object' && input !== null) {
@@ -33,7 +32,6 @@ function recursiveTransform(input, transFormFunction) {
     } else {
         return transFormFunction(input)
     }
-
 }
 
 const transFormFunction = (value) => {
@@ -61,7 +59,6 @@ const data = {
         }
     },
 };
-
 console.log(recursiveTransform(data, transFormFunction))
 ================================================================================================================================================================================
 Code 11:Implement a function that determines if two values are deep equal.
