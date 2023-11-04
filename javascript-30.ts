@@ -105,6 +105,15 @@ setTimeout(() => {
 
 ================================================================================================================================================================================
 Code 8: Implement a function that merges two objects together.
+function mergeObjects(obj1, obj2) {
+   return { ...obj1, ...obj2 };
+}
+// Example usage:
+const object1 = { a: 1, b: 2 };
+const object2 = { b: 3, c: 4 };
+const mergedObject = mergeObjects(object1, object2);
+
+console.log(mergedObject);  // Output: { a: 1, b: 3, c: 4 }
 ================================================================================================================================================================================
 Code 9: Implement a function to highlight text if searched terms appear within it.
 ================================================================================================================================================================================
