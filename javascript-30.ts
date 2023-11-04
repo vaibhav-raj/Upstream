@@ -84,6 +84,25 @@ console.log(memoizedSum(1, 2, 3)); // Calculates and caches the result
 console.log(memoizedSum(1, 2, 3)); // Returns the cached result without re-computation
 ================================================================================================================================================================================
 Code 7:  Implement a function that acts like setInterval but returns a function to cancel the Interval.
+function customSetInterval(callback, delay) {
+  const intervalId = setInterval(callback, delay);
+  // Return a function to cancel the interval
+  function cancel() {
+    clearInterval(intervalId);
+  }
+  return cancel;
+}
+// Example usage:
+const cancelInterval  = customSetInterval(() => {
+  console.log('Interval callback');
+}, 1000);
+
+// After 5 seconds, cancel the interval
+setTimeout(() => {
+  cancelInterval();
+  console.log('Interval canceled,,,');
+}, 5000);
+
 ================================================================================================================================================================================
 Code 8: Implement a function that merges two objects together.
 ================================================================================================================================================================================
