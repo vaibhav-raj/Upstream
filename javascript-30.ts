@@ -1,7 +1,6 @@
 30 Javascript questions I find very useful in the Interviews.
 ================================================================================================================================================================================
 Code 1: Implement a function that converts a Javascript value into a JSON string.
-    
 function convertToJSON(input){
   try{
     return JSON.stringify(input)
@@ -10,7 +9,6 @@ function convertToJSON(input){
     return null;
   }
 }
-
 const obj = {name:'vaibhav',age:25, designation :'software engineer'}
 console.log(convertToJSON(obj))
 ================================================================================================================================================================================
@@ -31,7 +29,6 @@ Code 8: Implement a function that merges two objects together.
 Code 9: Implement a function to highlight text if searched terms appear within it.
 ================================================================================================================================================================================
 Code 10: Implement a function to recursively transform values.
-
 function recursiveTransform(input, transFormFunction) {
     if (Array.isArray(input)) {
         return input.map(inp => recursiveTransform(inp, transFormFunction))
@@ -53,7 +50,6 @@ const transFormFunction = (value) => {
         return value
     }
 }
-
 // Example usage:
 const data = {
     a: 1,
