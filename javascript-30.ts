@@ -58,6 +58,30 @@ console.log(sortedArray); // Output: [11, 12, 22, 25, 64]
 
 ================================================================================================================================================================================
 Code 6: Implement a function that returns a memoized version of a function which accepts any number of arguments.
+function memoize(fn) {
+  const cache = new Map();
+
+  return function (...args) {
+    const key = JSON.stringify(args);
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    } else {
+      const result = fn(...args);
+      cache.set(key, result);
+      return result;
+    }
+  };
+}
+// Example function to be memoized
+function sum(...args) {
+  return args.reduce((total, num) => total + num, 0);
+}
+
+const memoizedSum = memoize(sum);
+
+console.log(memoizedSum(1, 2, 3)); // Calculates and caches the result
+console.log(memoizedSum(1, 2, 3)); // Returns the cached result without re-computation
 ================================================================================================================================================================================
 Code 7:  Implement a function that acts like setInterval but returns a function to cancel the Interval.
 ================================================================================================================================================================================
