@@ -202,8 +202,71 @@ console.log(squashObject(nestedObject));
 Code 14: Implement a function that creates a resumable interval object.
 ================================================================================================================================================================================
 Code 15: Implement the functionality behaviour of Promise.any()
+function promiseAny(promises) {
+  return new Promise((resolve, reject) => {
+    if (!Array.isArray(promises) || promises.length === 0) {
+      reject(new TypeError('promises must be a non-empty array'));
+      return;
+    }
+
+    let resolved = false;
+    let errors = [];
+
+    promises.forEach((promise) => {
+      Promise.resolve(promise)
+        .then((value) => {
+          if (!resolved) {
+            resolved = true;
+            resolve(value);
+          }
+        })
+        .catch((error) => {
+          errors.push(error);
+          if (errors.length === promises.length) {
+            reject(errors);
+          }
+        });
+    });
+  });
+}
+
+// Example usage:
+const promise1 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'Promise 1 resolved'));
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 200, 'Promise 2 rejected'));
+const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 300, 'Promise 3 resolved'));
+
+promiseAny([promise1, promise2, promise3])
+  .then((result) => console.log('Resolved:', result))
+  .catch((errors) => console.log('Rejected:', errors));
+
 ================================================================================================================================================================================
 Code 16: Implement the functionality behaviour of Promise.allSettled()
+function promiseAllSettled(promises) {
+  return Promise.all(
+    promises.map((promise) =>
+      Promise.resolve(promise)
+        .then((value) => ({
+          status: 'fulfilled',
+          value,
+        }))
+        .catch((reason) => ({
+          status: 'rejected',
+          reason,
+        }))
+    )
+  );
+}
+
+// Example usage:
+const promise1 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'Promise 1 resolved'));
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 200, 'Promise 2 rejected'));
+const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 300, 'Promise 3 resolved'));
+
+promiseAllSettled([promise1, promise2, promise3])
+  .then((results) => {
+    console.log('All Settled Results:', results);
+  });
+
 ================================================================================================================================================================================
 Code 17: Implement a function that returns a memoized version of a function which accepts a single argument.
 ================================================================================================================================================================================
