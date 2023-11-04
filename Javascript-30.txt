@@ -19,6 +19,50 @@ Code 8: Implement a function that merges two objects together.
 Code 9: Implement a function to highlight text if searched terms appear within it.
 ================================================================================================================================================================================
 Code 10: Implement a function to recursively transform values.
+
+function recursiveTransform(input, transFormFunction) {
+
+    if (Array.isArray(input)) {
+        return input.map(inp => recursiveTransform(inp, transFormFunction))
+    } else if (typeof input === 'object' && input !== null) {
+        const tranformObject = {}
+        for (let key in input) {
+            tranformObject[key] = recursiveTransform(input[key], transFormFunction)
+        }
+        return tranformObject
+    } else {
+        return transFormFunction(input)
+    }
+
+}
+
+const transFormFunction = (value) => {
+    if (typeof value === 'number') {
+        return value * 2
+    } else {
+        return value
+    }
+}
+
+// Example usage:
+const data = {
+    a: 1,
+    b: [2, 3, [4, 5]],
+    c: {
+        d: 6,
+        e: [7, 8],
+        f: {
+            g: {
+                h: {
+                    o: 3
+                }
+            },
+            k: [2, 3, [4, 5]],
+        }
+    },
+};
+
+console.log(recursiveTransform(data, transFormFunction))
 ================================================================================================================================================================================
 Code 11:Implement a function that determines if two values are deep equal.
 ================================================================================================================================================================================
