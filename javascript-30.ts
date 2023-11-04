@@ -17,6 +17,19 @@ Code 2: Implement a function that performs a deep copy of a value, but also hand
 Code 3: Implement a function to construct a table of contents from an HTML document.
 ================================================================================================================================================================================
 Code 4: Implement a function to filter rows of data matching a specified requirement.
+function filterData(input, fitlerFunc) {
+    return input.filter(inp => fitlerFunc(inp))
+}
+// Example data array
+const data = [
+  { name: 'Alice', age: 28 },
+  { name: 'Bob', age: 35 },
+  { name: 'David', age: 40 },
+];
+const fitlerFunc = (row) => {
+    return row.age > 30
+}
+console.log(filterData(data, fitlerFunc))
 ================================================================================================================================================================================
 Code 5: Implement a function that performs insertion sort.
 ================================================================================================================================================================================
