@@ -1,6 +1,18 @@
 30 Javascript questions I find very useful in the Interviews.
 ================================================================================================================================================================================
 Code 1: Implement a function that converts a Javascript value into a JSON string.
+    
+function convertToJSON(input){
+  try{
+    return JSON.stringify(input)
+  }catch(err){
+    console.error("Error converting to JSON:", error);
+    return null;
+  }
+}
+
+const obj = {name:'vaibhav',age:25, designation :'software engineer'}
+console.log(convertToJSON(obj))
 ================================================================================================================================================================================
 Code 2: Implement a function that performs a deep copy of a value, but also handles circular references.
 ================================================================================================================================================================================
