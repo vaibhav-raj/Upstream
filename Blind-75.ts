@@ -6,6 +6,9 @@ Output: [0, 1]
 Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 //bruteforce
+Time Complexity - O(n^2)
+Space complexity - O(1)
+
 function twoSum(nums, target) {
 	const length = nums.length
 	for (let i = 0; i < length; i++) {
@@ -17,6 +20,8 @@ function twoSum(nums, target) {
 }
 
 //optimal approach
+Time Complexity - O(n)
+Space complexity - O(1)
 function twoSum(nums, target) {
 	const map = new Map()
 	for (let i = 0; i < nums.length; i++) {
@@ -34,6 +39,8 @@ Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-
   Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
 
 //bruteforce
+Time Complexity - O(n^2)
+Space complexity - O(1)
 function maxProfit(prices) {
 	let maxProfit = 0
 	for (let i = 0; i < prices.length; i++) {
@@ -47,10 +54,11 @@ function maxProfit(prices) {
   return maxProfit
 }
 //optimal approach
+Time Complexity - O(n)
+Space complexity - O(1)
 function maxProfit(prices) {
 	let min = prices[0]   
 	let profit = 0
-
 	for (let i = 0; i < prices.length; i++) {
 		if (prices[i] < min) {  // updating min value of share price
 			min = prices[i]
@@ -60,11 +68,13 @@ function maxProfit(prices) {
 	return profit
 }
 ================================================================================================================================================================================
-Problem 2: Contains Duplicate
+Problem 3: Contains Duplicate
 Input: nums = [1,2,3,1]
 Output: true
 
 //bruteforce
+Time Complexity - O(n^2)
+Space complexity - O(1)
 function containsDuplicate(nums) {
 	for (let i = 0; i < nums.length; i++) {
 		for (let j = i + 1; j < nums.length; j++) {
@@ -74,6 +84,8 @@ function containsDuplicate(nums) {
 	return false
 }
 // better approach
+Time Complexity - O(nlogn)
+Space complexity - O(1)
 function containsDuplicate(nums) {
 	for (let i = 0; i < nums.length; i++) {
     nums= nums.sort((a,b) => a-b)
@@ -81,6 +93,8 @@ function containsDuplicate(nums) {
 	}
   return false
 }
+Time Complexity - O(n)
+Space complexity - O(1)
 // optimal approach
 function containsDuplicate(nums) {
   const map = new Map()
@@ -91,3 +105,43 @@ function containsDuplicate(nums) {
   return false
 }
 ================================================================================================================================================================================
+Problem 3: Product of array except self
+Input: nums = [1, 2, 3, 4]
+Output: [24, 12, 8, 6]
+
+
+================================================================================================================================================================================
+================================================================================================================================================================================
+================================================================================================================================================================================
+================================================================================================================================================================================
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
